@@ -4,7 +4,7 @@ Simple Hello World Web Application for Azure VM deployment
 This is a basic Flask app that demonstrates deploying your first application on Azure
 """
 
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -56,7 +56,7 @@ def hello_world():
 
 @app.route('/health')
 def health():
-    return {'status': 'healthy'}, 200
+    return jsonify({'status': 'healthy'}), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=False)

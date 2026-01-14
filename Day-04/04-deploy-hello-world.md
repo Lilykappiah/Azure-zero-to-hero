@@ -56,7 +56,7 @@ Copy the following code into `app.py`:
 
 ```python
 #!/usr/bin/env python3
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -106,8 +106,12 @@ def hello_world():
     </html>
     '''
 
+@app.route('/health')
+def health():
+    return jsonify({'status': 'healthy'}), 200
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=False)
 ```
 
 Save and exit (Ctrl+X, then Y, then Enter).
